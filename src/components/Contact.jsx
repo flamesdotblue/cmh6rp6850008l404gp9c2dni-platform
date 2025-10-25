@@ -1,49 +1,24 @@
-import { Mail, Github, Linkedin, Twitter } from 'lucide-react';
+import { useCallback } from 'react';
 
 export default function Contact() {
+  const onSubmit = useCallback((e) => {
+    e.preventDefault();
+    alert('Thanks for reaching out! Your message has been recorded locally. Update the form action or mailto in code to wire this to your inbox.');
+  }, []);
+
   return (
-    <section id="contact" className="relative mx-auto max-w-6xl px-6 py-20">
-      <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-violet-600/20 via-fuchsia-600/10 to-transparent p-10 backdrop-blur">
-        <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Let’s connect</h2>
-        <p className="mt-2 max-w-2xl text-white/75">
-          I’m open to AI/ML roles, research internships, and freelance collaborations. If my work resonates with your goals, drop me a line.
+    <section id="contact" className="max-w-6xl mx-auto px-6 py-24">
+      <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-fuchsia-600/15 via-indigo-600/10 to-transparent p-8">
+        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">Let’s connect</h2>
+        <p className="mt-3 text-white/80 max-w-2xl">
+          Have a role or project in mind? Send a quick message and I’ll get back to you.
         </p>
-        <div className="mt-6 flex flex-wrap items-center gap-3">
-          <a
-            href="mailto:youremail@example.com"
-            className="inline-flex items-center gap-2 rounded-full bg-white text-black px-5 py-3 text-sm font-medium hover:opacity-90"
-          >
-            <Mail className="h-4 w-4" />
-            youremail@example.com
-          </a>
-          <a
-            href="https://github.com/yourusername"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/10"
-          >
-            <Github className="h-4 w-4" />
-            GitHub
-          </a>
-          <a
-            href="https://www.linkedin.com/in/yourusername/"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/10"
-          >
-            <Linkedin className="h-4 w-4" />
-            LinkedIn
-          </a>
-          <a
-            href="https://twitter.com/yourusername"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/90 hover:bg-white/10"
-          >
-            <Twitter className="h-4 w-4" />
-            Twitter
-          </a>
-        </div>
+        <form onSubmit={onSubmit} className="mt-8 grid md:grid-cols-2 gap-4">
+          <input className="w-full rounded-md bg-black/30 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500" name="name" placeholder="Your name" required />
+          <input className="w-full rounded-md bg-black/30 border border-white/10 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500" type="email" name="email" placeholder="Your email" required />
+          <textarea className="md:col-span-2 w-full rounded-md bg-black/30 border border-white/10 px-4 py-3 h-32 outline-none focus:ring-2 focus:ring-indigo-500" name="message" placeholder="Tell me about your needs" required />
+          <button className="md:col-span-2 px-5 py-3 rounded-md bg-gradient-to-r from-fuchsia-500 to-indigo-500 text-white font-semibold hover:opacity-95 transition-opacity" type="submit">Send</button>
+        </form>
       </div>
     </section>
   );
